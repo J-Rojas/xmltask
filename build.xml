@@ -24,9 +24,6 @@
       <include name="**/*.java"/>
     </javac>
     <copy file="xmltask.properties" todir="classes"/>
-    <!-- we've built against dummy XPathAPI classes so we
-         can compile pre/post JDK 1.5 classes in the absence
-         of one or the other. We then delete the dummy classes -->
   </target>
 
   <target name="clean" depends="init" description="Clean classes">
