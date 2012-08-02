@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<project name="XmlTask" default="main" basedir=".">
+  <!-- $Id: build.xml,v 1.23 2007/04/26 20:16:33 bagnew Exp $ -->
+  <target name="init">
+  <!--
+    <property name="build.compiler"       value="jikes"/>
+    -->
+    <property name="build.compiler.emacs" value="true"/>
+    <property name="jarfile"              value="xmltask.jar"/>
+    <property name="tarfile"              value="xmltask.tar"/>
+
+    <!-- prepare dirs -->
+    <mkdir dir="classes"/>
+
+    <property file="xmltask.properties"/>
+    <property name="v_jarfile"              value="xmltask-v${com.oopsconsultancy.xmltask.version}.jar"/>
+    <property name="v_tarfile"              value="xmltask-v${com.oopsconsultancy.xmltask.version}.tar"/>
+  </target>
+
+  <target name="javac" depends="init" description="Java source build">
+    <mkdir dir="classes"/>
+    <!-- then compile -->
+    <javac srcdir="." destdir="." debug="on" nowarn="true" source="1.4">
+      <include name="**/XMLCatalog.java"/>
+    </javac>
+    <javac srcdir="." destdir="classes" debug="on" nowarn="true" source="1.4">
+      <include name="**/*.java"/>
+    </javac>
+    <copy file="xmltask.properties" todir="classes"/>
+    <!-- we've built against dummy XPathAPI classes so we
+         can compile pre/post JDK 1.5 classes in the absence
+         of one or the other. We then delete the dummy classes -->
+    <delete dir="classes/com/sun"/>
+    <delete dir="classes/org/apache"/>
+  </target>
+
+  <target name="clean" depends="init" description="Clean classes">
+    <!-- clean the test files up -->
+    <delete>
+      <fileset dir="." includes="TEST-*.txt"/>
+    </delete>
+    <delete>
+      <fileset dir="classes" includes="**/*.class"/>
+    </delete>
+    <delete file="tags"/>
+    <delete file="${jarfile}"/>
+    <delete file="${v_jarfile}"/>
+    <delete file="${tarfile}"/>
+    <delete file="${tarfile}.gz"/>
+    <delete file="${v_tarfile}.gz"/>
+  </target>
+
+  <target name="test" depends="init">
+    <junit haltonfailure="true">
+      <test name="com.oopsconsultancy.xmltask.test.TestXmlReplacement"/>
+      <classpath>
+        <pathelement location="${basedir}/classes"/>
+      </classpath>
+      <formatter type="plain"/>
+    </junit>
+    <echo>Tests succeed!</echo>
+  </target>
+
+  <target name="main" depends="javac,test" description="Complete build/test"/>
+
+  <target name="package" depends="javac" description="Compiles the appropriate .jars">
+    <jar jarfile="${jarfile}" basedir="classes"
+          includes="com/oopsconsultancy/**/*.class,xmltask.properties"
+          excludes="**/test/**/*"/>
+    <tar tarfile="${tarfile}"
+         basedir="." 
+         includes="**/*.java,**/*.xml,**/*.pl,**/*.dtd,LICENSE,CREDITS,CHANGES,doc/**/*.html,doc/**/*.gif,xmltask.properties" excludes="samples/**/*"/>
+    <gzip src="${tarfile}" zipfile="${tarfile}.gz"/>
+    <delete file="classes/org/apache/tools/ant/types/XMLCatalog.class"/>     
+    <delete file="${tarfile}"/>
+    <echo>Created .jar and .tar.gz</echo>
+  </target>
+
+  <target name="deliver" depends="package" description="Delivers to the Sourceforge site">
+    <!-- perform my local deployment for writing to Sourceforge -->
+    <!-- create a web page with the correct version -->
+    <checksum file="${tarfile}.gz" property="GZ_MD5"/>
+    <checksum file="${jarfile}" property="JAR_MD5"/>
+    <copy file="doc/xmltask.html" todir="/tmp"/>
+    <tstamp>
+      <format property="TODAY" pattern="dd-MMM-yyyy"/>
+    </tstamp>
+    <echo>Version ${com.oopsconsultancy.xmltask.version}</echo>
+    <replace file="/tmp/xmltask.html" token="@VERSION@" value="${com.oopsconsultancy.xmltask.version}"/>
+    <replace file="/tmp/xmltask.html" token="@TODAY@" value="${TODAY}"/>
+    <replace file="/tmp/xmltask.html" token="@GZ_MD5@" value="${GZ_MD5}"/>
+    <replace file="/tmp/xmltask.html" token="@JAR_MD5@" value="${JAR_MD5}"/>
+    <replace file="/tmp/xmltask.html" token="@JAR_14_MD5@" value="${JAR_14_MD5}"/>
+
+    <!-- get and confirm the xmltask version -->
+    <input message="Distribute [${com.oopsconsultancy.xmltask.version}] to Sourceforge " validargs="y,n" addproperty="distribute"/>
+    <condition property="do.abort">
+      <equals arg1="n" arg2="${distribute}"/>
+    </condition>
+    <fail if="do.abort"/>
+
+    <echo>Created version stamped documentation page /tmp/xmltask.html</echo>
+
+    <!-- generate versioned files for Sourceforge dispatch -->
+    <copy file="${jarfile}"       tofile="${v_jarfile}"/>
+    <copy file="${tarfile}.gz"    tofile="${v_tarfile}.gz"/>
+    <echo>Created ${v_jarfile}, ${v_tarfile}.gz</echo>
+
+    <!-- sends the files to Sourceforge.net -->
+    <echo>FTPing to upload.sourceforge.net</echo>
+    <ftp server="upload.sourceforge.net"
+     password="xmltask@oopsconsultancy.com"
+     userid="anonymous"
+     verbose="yes"
+     remotedir="/incoming"
+     depends="yes">
+      <fileset dir=".">
+        <include name="${v_jarfile}"/>
+        <include name="${v_tarfile}.gz"/>
+      </fileset>
+    </ftp>
+  </target>
+</project>

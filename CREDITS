@@ -1,0 +1,35 @@
+# $Id: CREDITS,v 1.17 2007/02/14 12:36:10 bagnew Exp $
+
+Thanks to those who have contributed suggestions, comments and fixes.
+
+Jules Gosnell           - jules@mortbay.com
+Kyle Adams              - kadams@gfs.com
+George Standing         - georgestanding@yahoo.com
+Richard Ward            - richard.ward@jacobsrimell.com
+Guillaume Cote          - cote@computer.org
+Jean-Yves Sironneau     - jean-yves.sironneau@sharing.com
+Matthew Inger           - inger@synygy.com
+Nicola Castelnuovo      - nicola.castelnuovo@i-bp.banquepopulaire.fr
+Serge Shikov            - sshikov@microtest.ru
+Jan Materne             - jan.materne@rzf.fin.nrw.de
+Daniel Ochs             - dan.ochs@wrycan.com
+Igor Grapp              - igrapp@vnuemedia.com
+Nils Winkler            - nils@nilswinkler.com
+Tom Furrer              - tfurrer@infonic.net
+Nagarajan Murugesan     - nmurugesan@selectica.com
+Kevin LaVergne          - klavergne@users.sourceforge.net
+Michael Dodd            - Michael.Dodd@ingrambook.com
+Juergen Damke           - damke@de.ibm.com
+Remi Clavier            - remi.clavier@francetelecom.com
+Pedro Rodrigues         - fantasma_2001@yahoo.com
+Moritz von Hassselbach  - mvonhasselbach@ptc.com
+David Karr              - david.karr@wamu.net
+Ephemeris Lappis        - ephemeris.lappis@gmail.com
+Bernd Eckenfels         - b.eckenfels@seeburger.de
+I Wayan Saryada         - wsaryada@balicamp.com
+Maarten Coene           - maarten_coene@yahoo.com
+Stacey Murphy           - stacey.murphy@ericsson.com
+
+Thanks to Dave Megginson (info@megginson.com) for the use
+of the XMLWriter and DataWriter classes (now somewhat
+modified)

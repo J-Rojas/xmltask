@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<project name="test" default="main" basedir=".">
+  <!-- $Id: build-77.xml,v 1.2 2003/12/24 21:15:37 bagnew Exp $ -->
+  <taskdef name="xmltask" classname="com.oopsconsultancy.xmltask.ant.XmlTask"/>
+
+  <!-- tests calling ant targets for nodes identified by xmltask -->
+  <target name="main">
+    <property name="inheritable" value="true"/>
+
+    <!-- first create an output file -->
+    <xmltask dest="77-out.xml">
+      <insert path="/">
+        <![CDATA[
+          <root/>
+        ]]>
+      </insert>
+    </xmltask>
+
+    <!-- then call subtargets using 77.xml as the driver -->
+    <xmltask source="77.xml">
+      <call path="/a/b" target="ab" inheritAll="true" buffer="b_ab"/>
+      <call path="/a/c" target="ac" inheritAll="false" buffer="b_ac"/>
+    </xmltask>
+  </target>
+
+  <target name="ab">
+    <echo>Called AB ok ${inheritable}</echo>
+    <xmltask source="77-out.xml" dest="77-out.xml">
+      <insert path="/root" buffer="b_ab"/>
+      <insert path="/root">
+        ${inheritable}
+      </insert>
+    </xmltask>
+  </target>
+
+  <target name="ac">
+    <echo>Called AC ok ${inheritable}</echo>
+    <xmltask source="77-out.xml" dest="77-out.xml">
+      <insert path="/root" buffer="b_ac"/>
+      <insert path="/root">
+        ${inheritable}
+      </insert>
+    </xmltask>
+  </target>
+
+</project>

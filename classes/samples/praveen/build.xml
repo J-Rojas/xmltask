@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<project name="test" default="main" basedir=".">
+  <taskdef name="xmltask" classname="com.oopsconsultancy.xmltask.ant.XmlTask"/>
+
+  <target name="main">
+    <xmltask source="in.xml" dest="out.xml" report="true" failWithoutMatch="true">
+    <attr path="/:WebAppBinding/:resRefBindings" attr="jndiName" value="jdbc/NewDataSource"/>
+    </xmltask>
+  </target>
+</project>

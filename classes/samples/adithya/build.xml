@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<project name="test" default="main" basedir=".">
+  <taskdef name="xmltask" classname="com.oopsconsultancy.xmltask.ant.XmlTask"/>
+
+  <target name="main">
+    <antcall target="ins"/>
+    <antcall target="ins"/>
+    <antcall target="ins"/>
+  </target>
+  <target name="ins">
+
+  <xmltask source="x.xml" dest="x.xml" failWithoutMatch="true">
+             <copy path="count(/configuration/category[@name='com.bea.wli.event'])"
+                        property="is.path.available" />
+               <insert path="/configuration/root" position="after" if="is.path.available">
+                  <![CDATA[ <category name="com.bea.wli.event"> 
+                 <priority value="debug" />
+                 <appender-ref ref="RDBMS_EG_LOGFILE_DEBUG"/>
+             </category> ]]>
+             </insert>
+             </xmltask>
+  </target>
+</project>

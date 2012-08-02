@@ -1,0 +1,5 @@
+<!-- $Id: 93.xml,v 1.1 2005/03/23 11:41:24 bagnew Exp $ -->
+<test>
+        <tes number="1" value="avalue"/>
+        <tes number="2" />
+</test> 

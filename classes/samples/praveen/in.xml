@@ -1,0 +1,6 @@
+<WebAppBinding>
+  <webapp href="WEB-INF/web.xml# "/>
+  <resRefBindings id="ResourceRefBinding_123456789" jndiName="jdbc/DataSource">
+    <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_123456789"/>
+  </resRefBindings>
+</WebAppBinding>

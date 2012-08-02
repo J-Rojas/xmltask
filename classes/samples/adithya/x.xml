@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+<root/>
+<category name="com.bea.wli.event"> 
+                 <priority value="debug"/>
+                 <appender-ref ref="RDBMS_EG_LOGFILE_DEBUG"/>
+             </category>
+<category name="com.bea.wli.event"> 
+                 <priority value="debug"/>
+                 <appender-ref ref="RDBMS_EG_LOGFILE_DEBUG"/>
+             </category>
+<category name="com.bea.wli.event"> 
+                 <priority value="debug"/>
+                 <appender-ref ref="RDBMS_EG_LOGFILE_DEBUG"/>
+             </category>
+<category name="com.bea.wli.event"> 
+                 <priority value="debug"/>
+                 <appender-ref ref="RDBMS_EG_LOGFILE_DEBUG"/>
+             </category>
+<category name="com.bea.wli.event"> 
+                 <priority value="debug"/>
+                 <appender-ref ref="RDBMS_EG_LOGFILE_DEBUG"/>
+             </category>
+<category name="com.bea.wli.event"> 
+                 <priority value="debug"/>
+                 <appender-ref ref="RDBMS_EG_LOGFILE_DEBUG"/>
+             </category>
+<category name="com.bea.wli.event"> 
+                 <priority value="debug"/>
+                 <appender-ref ref="RDBMS_EG_LOGFILE_DEBUG"/>
+             </category>
+<category name="com.bea.wli.event"> 
+                 <priority value="debug"/>
+                 <appender-ref ref="RDBMS_EG_LOGFILE_DEBUG"/>
+             </category>
+<category name="com.bea.wli.event"> 
+                 <priority value="debug"/>
+                 <appender-ref ref="RDBMS_EG_LOGFILE_DEBUG"/>
+             </category>
+<category name="com.bea.wli.event"> 
+                 <priority value="debug"/>
+                 <appender-ref ref="RDBMS_EG_LOGFILE_DEBUG"/>
+             </category>
+<category name="com.bea.wli.event"> 
+                 <priority value="debug"/>
+                 <appender-ref ref="RDBMS_EG_LOGFILE_DEBUG"/>
+             </category>
+<category name="com.bea.wli.event"> 
+                 <priority value="debug"/>
+                 <appender-ref ref="RDBMS_EG_LOGFILE_DEBUG"/>
+             </category>
+<category name="com.bea.wli.event"> 
+                 <priority value="debug"/>
+                 <appender-ref ref="RDBMS_EG_LOGFILE_DEBUG"/>
+             </category>
+<category name="com.bea.wli.event"> 
+                 <priority value="debug"/>
+                 <appender-ref ref="RDBMS_EG_LOGFILE_DEBUG"/>
+             </category>
+<category name="com.bea.wli.event"> 
+                 <priority value="debug"/>
+                 <appender-ref ref="RDBMS_EG_LOGFILE_DEBUG"/>
+             </category>
+<category name="com.bea.wli.event"> 
+                 <priority value="debug"/>
+                 <appender-ref ref="RDBMS_EG_LOGFILE_DEBUG"/>
+             </category>
+<category name="com.bea.wli.event"> 
+                 <priority value="debug"/>
+                 <appender-ref ref="RDBMS_EG_LOGFILE_DEBUG"/>
+             </category>
+<category name="com.bea.wli.event"> 
+                 <priority value="debug"/>
+                 <appender-ref ref="RDBMS_EG_LOGFILE_DEBUG"/>
+             </category>
+</configuration>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<!-- $Id: build-64.xml,v 1.4 2007/02/13 15:10:37 bagnew Exp $ -->
+
+<project name="test" default="main" basedir=".">
+  <taskdef name="xmltask" classname="com.oopsconsultancy.xmltask.ant.XmlTask"/>
+  <!--
+  <taskdef name="script"  classname="org.apache.tools.ant.taskdefs.optional.Script"/>
+  -->
+  <target name="sub">
+    <echo>Executing xmltask</echo>
+    <xmltask id="xmltask" report="true" preserveType="true">
+      <replace path="/log4j/b/text()" withText="junk"/>
+      <replace path="/nonexistant" withText="non"/>
+      <replace path="/log4j/b/text()" withText="junk"/>
+    </xmltask>
+  </target>
+
+  <!-- tests the script stuff -->
+  <target name="main">
+    <script language="javascript"><![CDATA[
+      xmltask.setSource("64.xml") 
+      xmltask.setDest("64-out.xml") 
+      sub.execute()
+      xmltask.setSource("64a.xml") 
+      xmltask.setDest("64a-out.xml") 
+      sub.execute()
+    ]]></script>
+  </target>
+
+</project>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<project name="test" default="main" basedir=".">
+  <taskdef name="xmltask" classname="com.oopsconsultancy.xmltask.ant.XmlTask"/>
+
+  <!-- tests entity replacement -->
+  <target name="main">
+     <xmltask source="40.xml" dest="40-out.xml" report="true"/>
+  </target>
+
+</project>

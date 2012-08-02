@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<project name="test" default="main" basedir=".">
+  <taskdef name="xmltask" classname="com.oopsconsultancy.xmltask.ant.XmlTask"/>
+
+  <!-- tests output of private external dtds
+       using the standard outputter -->
+  <target name="main">
+    <xmltask source="72.xml" dest="72-out.xml" report="true" preserveType="true">
+    </xmltask>
+  </target>
+</project>

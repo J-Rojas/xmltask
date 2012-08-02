@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebAppBinding>
+  <webapp href="WEB-INF/web.xml# "/>
+  <resRefBindings id="ResourceRefBinding_123456789" jndiName="jdbc/NewDataSource">
+    <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_123456789"/>
+  </resRefBindings>
+</WebAppBinding>
