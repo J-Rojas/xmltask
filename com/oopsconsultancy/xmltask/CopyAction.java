@@ -76,9 +76,11 @@ public class CopyAction extends Action {
       else {
         task.log("Can only copy/cut text() nodes and attribute values to properties (found "+node.getClass().getName()+")", Project.MSG_WARN);
       }
+      /* JR - append is allowed above, do not warn
       if (append) {
         task.log("Cannot append values to properties", Project.MSG_WARN);
       }
+      */
     }
   }
   

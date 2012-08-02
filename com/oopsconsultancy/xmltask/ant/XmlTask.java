@@ -15,6 +15,7 @@ import com.oopsconsultancy.xmltask.*;
 import com.oopsconsultancy.xmltask.output.*;
 import org.apache.tools.ant.filters.*;
 import java.net.*;
+import javax.xml.xpath.XPathFactory;
 
 /**
  * the basic Ant xml task. Records a set of actions to
@@ -81,6 +82,11 @@ public class XmlTask extends Task {
    * the list of replacements to build
    */
   private List replacements = new ArrayList();
+
+  public void setFactory(final String p) {
+     log("XPath Factory = " + p, Project.MSG_VERBOSE);
+     System.setProperty(XPathFactory.DEFAULT_PROPERTY_NAME + ":" + XPathFactory.DEFAULT_OBJECT_MODEL_URI, p);
+  }
 
   public void setPublic(final String p) {
     doctype_public = p;
