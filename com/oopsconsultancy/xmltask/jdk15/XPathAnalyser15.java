@@ -46,7 +46,15 @@ public class XPathAnalyser15 implements XPathAnalyser {
 
   public int analyse(Node node, String xpath) throws Exception {
     int count = 0;
-    Object result = m_xpath.evaluate(xpath, node, XPathConstants.NODESET);
+    Object result = null;
+    try
+    {
+        result = m_xpath.evaluate(xpath, node, XPathConstants.NODESET);
+    }
+    catch (Exception e)
+    {
+
+    }
     if (result instanceof NodeList) {
       NodeList nl = (NodeList) result;
       Node n;
