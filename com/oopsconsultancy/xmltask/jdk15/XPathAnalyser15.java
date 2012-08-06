@@ -60,7 +60,10 @@ public class XPathAnalyser15 implements XPathAnalyser {
       Node n;
       for (int i = 0; i < nl.getLength(); i++) {
         n = nl.item(i);
-        client.applyNode(n, callback);
+        if (n instanceof ProcessingInstruction)
+            client.applyNode(n.getNodeValue(), callback);            
+        else
+            client.applyNode(n, callback);
         count++;
       }
     }
