@@ -121,6 +121,10 @@ public class XmlTask extends Task {
     docs.add(new InputBuffer(buffer));
   }
 
+  public void setSourceProperty(final String prop) throws Exception {
+    docs.add(new InputProperty(prop));
+  }
+
   public void setExpandEntityReferences(final boolean expandEntityReferences) {
     this.expandEntityReferences = expandEntityReferences;
   }
